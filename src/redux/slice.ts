@@ -3,7 +3,6 @@ import { Package } from '../types/Package';
 
 interface State {
     packageList: Package[];
-    listLength: number;
     searchValue: string;
     isAddFormVisible: boolean;
 }
@@ -12,38 +11,21 @@ const initialState: State = {
     packageList: [
         {
             id: 0,
-            client: '111',
-            pickupAddress: '222',
-            dropoffAddress: 'eeoeeoeo',
-            courier: 'eeoeooeoe',
+            client: 'Sam Smith',
+            pickupAddress: '3085 Frami Meadows',
+            dropoffAddress: '644 Buster Ford',
+            courier: 'Andre Armstrong',
             status: 'offline' as const,
         },
         {
             id: 1,
-            client: '333',
-            pickupAddress: '444',
-            dropoffAddress: 'eeoeeoeo',
-            courier: 'eeoeooeoe',
-            status: 'online' as const,
-        },
-        {
-            id: 2,
-            client: '333',
-            pickupAddress: '222',
-            dropoffAddress: 'eeoeeoeo',
-            courier: 'eeoeooeoe',
-            status: 'offline' as const,
-        },
-        {
-            id: 3,
-            client: '444',
-            pickupAddress: '111',
-            dropoffAddress: 'eeoeeoeo',
-            courier: 'eeoeooeoe',
+            client: 'Emma Johnson',
+            pickupAddress: '123 Maple Street, Cityville',
+            dropoffAddress: '456 Oak Avenue, Townsville',
+            courier: 'Liam Miller',
             status: 'online' as const,
         },
     ],
-    listLength: 0,
     searchValue: '',
     isAddFormVisible: false,
 };
@@ -87,9 +69,22 @@ const packageSlice = createSlice({
                 isAddFormVisible: !state.isAddFormVisible,
             };
         },
+        toggleActiveStatus: (state, action: PayloadAction<{ id: number }>) => {
+            const item = state.packageList.find(({ id }) => id === action.payload.id);
+            const index = state.packageList.indexOf(item as Package);
+            return {
+                ...state,
+                packageList: [
+                    ...state.packageList.slice(0, index),
+                    { ...(item as Package), status: item!.status === 'offline' ? 'online' : 'offline' },
+                    ...state.packageList.slice(index + 1),
+                ],
+            };
+        },
     },
 });
 
-export const { addPackageItem, removePackageItem, setSearchValue, toggleIsAddFormVisible } = packageSlice.actions;
+export const { addPackageItem, removePackageItem, setSearchValue, toggleIsAddFormVisible, toggleActiveStatus } =
+    packageSlice.actions;
 
 export default packageSlice.reducer;
