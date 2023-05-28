@@ -1,0 +1,41 @@
+@use 'base';
+
+%status {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  padding: 6px 10px;
+  width: fit-content;
+}
+
+%status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin-right: 8px;
+}
+
+.status-online {
+  @extend %status;
+  color: base.$success-color;
+  background-color: base.$success-background-color;
+
+  .status-dot {
+    @extend %status-dot;
+    background-color: base.$success-color;
+  }
+}
+
+.status-offline {
+  @extend %status;
+  color: base.$warning-color;
+  background-color: base.$warning-background-color;
+
+  .status-dot {
+    @extend %status-dot;
+    background-color: base.$warning-color;
+  }
+}
