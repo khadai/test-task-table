@@ -26,16 +26,18 @@ const Component = () => {
                 <h2>Packages</h2>
                 <p className="text-entries">{filterList().length} entries</p>
             </div>
-            <table className="table">
-                <thead>
-                    <TableHeader />
-                </thead>
-                <tbody>
-                    {filterList().map((item) => (
-                        <TableRow key={item.id} {...item} />
-                    ))}
-                </tbody>
-            </table>
+            <div className="scroll-container">
+                <table className="table">
+                    <thead>
+                        <TableHeader />
+                    </thead>
+                    <tbody>
+                        {filterList().map((item) => (
+                            <TableRow key={item.id} {...item} />
+                        ))}
+                    </tbody>
+                </table>
+            </div>
             {isAddFormVisible && <AddForm />}
         </div>
     );

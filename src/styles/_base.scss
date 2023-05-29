@@ -1,16 +1,15 @@
 $font-stack: 'Roboto', sans-serif;
 $text-primary-color: #000;
 $text-secondary-color: #999;
-$primary-color: #0F8DC4;
-$divider-color:#C4C4C4;
-$background-color:#EDEDED;
-$success-color:#398E2A;
-$success-background-color:rgba(115, 228, 96, 0.4);
+$primary-color: #0f8dc4;
+$divider-color: #c4c4c4;
+$background-color: #ededed;
+$success-color: #398e2a;
+$success-background-color: rgba(115, 228, 96, 0.4);
 
-$warning-color:#b28900;
-$warning-background-color:#ffcf33;
-
+$warning-color: #b28900;
+$warning-background-color: #ffcf33;
 
 body {
-  font: 100% $font-stack;
+    font: 100% $font-stack;
 }
