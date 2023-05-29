@@ -28,7 +28,7 @@ const Component = () => {
 
     const validate = ({ id, client, pickupAddress, dropoffAddress, courier }: Package) => {
         return {
-            id: list.some((e) => e.id === id) || id < 0,
+            id: list.some((e) => e.id.toString() === id.toString()) || id < 0,
             client: client.length === 0,
             pickupAddress: pickupAddress.length === 0,
             dropoffAddress: dropoffAddress.length === 0,
@@ -59,7 +59,7 @@ const Component = () => {
                 onChange={handleChange}
                 value={formInputData.id}
                 name="id"
-                min="0"
+                min={0}
                 className={`form-control ${errors?.id ? 'error' : ''}`}
                 placeholder="ID"
             />
